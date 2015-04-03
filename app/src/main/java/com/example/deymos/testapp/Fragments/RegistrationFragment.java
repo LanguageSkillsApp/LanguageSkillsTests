@@ -57,15 +57,15 @@ public class RegistrationFragment extends Fragment {
                             String loginUsername = login.getText().toString();
                             String passwordText = password.getText().toString();
                             String confirmPass = confirmPassword.getText().toString();
-                            if (loginUsername.matches("") || passwordText.matches("") || confirmPass.matches("")) {
-                                Toast.makeText(getActivity(), "Empty Fields" ,Toast.LENGTH_SHORT).show();
-                            }
-                            if (!passwordText.equals(confirmPass) || passwordText.matches("") || confirmPass.matches("")) {
-                                Toast.makeText(getActivity(), "Password doesn't match", Toast.LENGTH_SHORT).show();
+                            if ( loginUsername.matches("") || passwordText.matches("") || confirmPass.matches("") ) {
+                                Toast.makeText(getActivity(), "Empty Fields, try again", Toast.LENGTH_SHORT).show();
                             } else {
-                                //TODO save loginUsername and password to db
-                                Toast.makeText(getActivity(), "Account created you can login now", Toast.LENGTH_LONG).show();
-                                dialog.dismiss();
+                                if ( !passwordText.equals(confirmPass) || passwordText.matches("") || confirmPass.matches("") ) {
+                                    Toast.makeText(getActivity(), "Password doesn't match, try again", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    //TODO save loginUsername and password to db
+                                    Toast.makeText(getActivity(), "Account created you can login now", Toast.LENGTH_LONG).show();
+                                }
                             }
                         }
                     });
@@ -73,7 +73,6 @@ public class RegistrationFragment extends Fragment {
                     builder.setNegativeButton(R.string.back_dialog_btn, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
                         }
                     });
                     builder.show();
@@ -93,7 +92,7 @@ public class RegistrationFragment extends Fragment {
                     //TODO get password from db using loginUsername
                     String passwordFromDb = "password from db";
                     if (passwordText.equals(passwordFromDb)) {
-                        Toast.makeText(getActivity(), "Login Successfull", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
                         //TODO go to new fragment or activity
                     } else {
                         Toast.makeText(getActivity(), "Login or Password doesn't match", Toast.LENGTH_SHORT).show();
