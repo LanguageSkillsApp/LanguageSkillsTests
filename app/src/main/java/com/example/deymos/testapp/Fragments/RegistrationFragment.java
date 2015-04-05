@@ -18,7 +18,7 @@ public class RegistrationFragment extends Fragment {
     private View fragmentView;
     private Button signUpButton, loginButton;
     private EditText login, password;
-
+    int r;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
